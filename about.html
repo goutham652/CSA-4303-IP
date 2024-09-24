@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Listings in Andhra Pradesh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .property {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .property h2 {
+            margin-top: 0;
+        }
+        .property-details {
+            margin-bottom: 10px;
+        }
+        .booked-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .highlight {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+    </style>
+    <script>
+        function markAsBooked(button) {
+            const propertyDetails = button.closest('.property');
+            const location = propertyDetails.querySelector('.property-details p:nth-child(1)').textContent.replace('Location: ', '');
+            const price = propertyDetails.querySelector('.property-details p:nth-child(2)').textContent.replace('Price: ', '');
+            const size = propertyDetails.querySelector('.property-details p:nth-child(3)').textContent.replace('Size: ', '');
+            const landArea = propertyDetails.querySelector('.property-details p:nth-child(4)').textContent.replace('Land Area: ', '');
+
+            const bookedProperty = {
+                location,
+                price,
+                size,
+                landArea
+            };
+
+            localStorage.setItem('bookedProperty', JSON.stringify(bookedProperty));
+
+            window.location.href = 'hemesh.html'; // Redirect to the booked details page
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <a href="homepage.html" class="back-button">Back to Home</a>
+        <h1>Real Estate Listings</h1>
+
+        <!-- House 1 -->
+        <div class="property">
+            <h2>House 1</h2>
+            <div class="property-details">
+                <p>Location: 10 Beach Road, Visakhapatnam, Andhra Pradesh</p>
+                <p>Price: ₹2,00,00,000</p>
+                <p>Size: 5 BHK, 4 Bathrooms</p>
+                <p>Land Area: 5000 sq. ft.</p>
+                <p><a href="https://maps.app.goo.gl/6aw64FNNicza5apE6" target="_blank">View on Google Maps</a></p>
+                <a class="booked-button" onclick="markAsBooked(this)">Book</a>
+            </div>
+        </div>
+
+        <!-- House 2 -->
+        <div class="property">
+            <h2>House 2</h2>
+            <div class="property-details">
+                <p>Location: 5 Gandhi Nagar, Guntur, Andhra Pradesh</p>
+                <p>Price: ₹1,80,00,000</p>
+                <p>Size: 4 BHK, 3 Bathrooms</p>
+                <p>Land Area: 4000 sq. ft.</p>
+                <p><a href="https://maps.app.goo.gl/vjC8PLave13oH9Cu8" target="_blank">View on Google Maps</a></p>
+                <a class="booked-button" onclick="markAsBooked(this)">Book</a>
+            </div>
+        </div>
+
+        <!-- House 3 -->
+        <div>
+            <h2>House 3</h2>
+            <div class="property-details">
+                <p>Location: 12 RTC Colony, Ongole, Andhra Pradesh</p>
+                <p>Price: ₹1,50,00,000</p>
+                <p>Size: 4 BHK, 3 Bathrooms</p>
+                <p>Land Area: 3500 sq. ft.</p>
+                <p><a href="https://maps.app.goo.gl/FTUNJD7YDNq2XWmi7" target="_blank">View on Google Maps</a></p>
+                <a class="booked-button" onclick="markAsBooked(this)">Book</a>
+            </div>
+        </div>
+
+        <!-- Land 1 -->
+        <div class="property">
+            <h2>Land 1</h2>
+            <div class="property-details">
+                <p>Location:Vizianagaram, Andhra Pradesh</p>
+                <p>Price: ₹80,00,000</p>
+                <p>Land Area: 2 Acres</p>
+                <p><a href="https://maps.app.goo.gl/pokf74DKFKtk9jCP9" target="_blank">View on Google Maps</a></p>
+                <a class="booked-button" onclick="markAsBooked(this)">Book</a>
+            </div>
+        </div>
+
+        <!-- Land 2 -->
+        <div class="property">
+            <h2>Land 2</h2>
+            <div class="property-details">
+                <p>Location: NH-65, Vijayawada, Andhra Pradesh</p>
+                <p>Price: ₹1,20,00,000</p>
+                <p>Land Area: 3 Acres</p>
+                <p><a href="https://maps.app.goo.gl/fhnvCY1xZxctwHDF6" target="_blank">View on Google Maps</a></p>
+                <a class="booked-button" onclick="markAsBooked(this)">Book</a>
+            </div>
+        </div>
+
+        <!-- Land 3 -->
+        <div>
+            <h2>Land 3</h2>
+            <div class="property-details">
+                <p>Location: NH-216, Kakinada, Andhra Pradesh</p>
+                <p>Price: ₹1,50,00,000</p>
+                <p>Land Area: 5 Acres</p>
+                <p><a href="https://maps.app.goo.gl/89CDecPqGMZRjWud6" target="_blank">View on Google Maps</a></p>
+                <a class="booked-button" onclick="markAsBooked(this)">Book</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

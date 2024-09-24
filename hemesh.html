@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booked Property Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .success-message {
+            color: green;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .property-details, .buyer-details {
+            margin: 20px 0;
+        }
+        .property-details p, .buyer-details p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .book-button, .back-button {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .book-button {
+            background-color: #28a745;
+        }
+    </style>
+    <script>
+        function loadBookedProperty() {
+            const bookedProperty = JSON.parse(localStorage.getItem('bookedProperty'));
+
+            if (bookedProperty) {
+                document.getElementById('location').textContent = Location: ${bookedProperty.location};
+                document.getElementById('price').textContent = Price: ${bookedProperty.price};
+                document.getElementById('size').textContent = Size: ${bookedProperty.size};
+                document.getElementById('contactName').textContent = Contact: ${bookedProperty.contactName};
+                document.getElementById('contactEmail').textContent = Email: ${bookedProperty.contactEmail};
+                document.getElementById('contactPhone').textContent = Phone: ${bookedProperty.contactPhone};
+            } else {
+                document.getElementById('property-details').innerHTML = '<p>No booked property found.</p>';
+            }
+        }
+
+        function bookProperty(event) {
+            event.preventDefault();
+
+            const buyerName = document.getElementById('buyerName').value;
+            const buyerEmail = document.getElementById('buyerEmail').value;
+            const buyerPhone = document.getElementById('buyerPhone').value;
+
+            const buyerDetails = {
+                buyerName,
+                buyerEmail,
+                buyerPhone
+            };
+
+            localStorage.setItem('buyerDetails', JSON.stringify(buyerDetails));
+            document.getElementById('successMessage').textContent = "Booked Successfully!";
+            document.getElementById('buyer-form').style.display = 'none';
+            document.getElementById('property-details').style.display = 'block';
+
+            // Load buyer details into the page
+            loadBuyerDetails();
+        }
+
+        function loadBuyerDetails() {
+            const buyerDetails = JSON.parse(localStorage.getItem('buyerDetails'));
+
+            if (buyerDetails) {
+                document.getElementById('buyerNameDisplay').textContent = Buyer Name: ${buyerDetails.buyerName};
+                document.getElementById('buyerEmailDisplay').textContent = Buyer Email: ${buyerDetails.buyerEmail};
+                document.getElementById('buyerPhoneDisplay').textContent = Buyer Phone: ${buyerDetails.buyerPhone};
+                document.getElementById('buyer-details').style.display = 'block';
+            }
+        }
+
+        window.onload = function () {
+            loadBookedProperty();
+            loadBuyerDetails(); // This will also load buyer details if present
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Booked Property Details</h1>
+        <p id="successMessage" class="success-message"></p>
+
+        <div id="property-details" style="display:none;">
+            <h2>Property Details</h2>
+            <p id="location"></p>
+            <p id="price"></p>
+            <p id="size"></p>
+            <p id="contactName"></p>
+            <p id="contactEmail"></p>
+            <p id="contactPhone"></p>
+        </div>
+
+        <form method="POST" action="report.php">
+        <div id="buyer-form" class="buyer-details">
+            <h2>Enter Your Details</h2>
+            <p><label for="buyerName">Name:</label> <input type="text" id="buyerName" name="name" required></p>
+            <p><label for="buyerEmail">Email:</label> <input type="email" id="buyerEmail" name="email" required></p>
+            <p>
+                <label for="buyerPhone">Phone</label>
+                <input type="tel" id="buyerPhone" name="phone" pattern="\d{10}" maxlength="10" title="Enter valid mobile number" required>
+            </p>
+            <button class="book-button" onclick="bookProperty(event)">Book</button>
+        </div>
+        </form>
+
+        <div id="buyer-details" style="display:none;">
+            <h2>Buyer Details</h2>
+            <p id="buyerNameDisplay"></p>
+            <p id="buyerEmailDisplay"></p>
+            <p id="buyerPhoneDisplay"></p>
+        </div>
+
+        <a href="homepage.html" class="back-button">Back to Home</a>
+    </div>
+</body>
+</html>

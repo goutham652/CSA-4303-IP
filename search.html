@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Properties</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+            text-align: center;
+        }
+        .search-content {
+            padding: 20px;
+            background: #ffffff;
+            margin: 20px 0;
+        }
+        footer {
+            padding: 20px;
+            background: #35424a;
+            color: #ffffff;
+            text-align: center;
+        }
+        .back-to-home {
+            display: block;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .back-to-home a {
+            color: #e8491d;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-size: 16px;
+        }
+        input[type="date"] {
+            padding: 8px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #35424a;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #e8491d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Search Properties</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="container search-content">
+        <h2>Search by Date</h2>
+        <form action="search.php" method="get">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" name="start-date" required>
+
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" name="end-date" required>
+
+            <input type="submit" value="Search">
+        </form>
+    </section>
+
+    <div class="back-to-home">
+        <a href="homepage.html">Back to Home</a>
+    </div>
+
+    <footer>
+        <p>Contact us: (123) 456-7890 | email@example.com</p>
+    </footer>
+</body>
+</html>
