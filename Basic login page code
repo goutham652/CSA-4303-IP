@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            MY PAGE
+        </title>
+        <style>
+            button{
+                background-color: aqua;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            label{
+               color:blue; 
+            }
+            input{
+                width: 550px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+        <form method="POST" action="home.php">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br><br>
+                <button type="submit">Submit</button>
+        </form>
+    </center>
+    </body>
+</html>
+
+
+
+onclick="window.location.href='tollgate.html'"
